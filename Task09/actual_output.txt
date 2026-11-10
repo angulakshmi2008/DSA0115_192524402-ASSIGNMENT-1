@@ -1,0 +1,36 @@
+﻿=== Task 09: Comprehensive Fare Engine Test Suite ===
+
+No  Case              Expected  Actual  Result
+----+-----------------+---------+-------+-------
+1   Inner off-peak        1000    1000    PASS
+2   Middle off-peak       2000    2000    PASS
+3   Outer off-peak        3000    3000    PASS
+4   Inner peak AM         1200    1200    PASS
+5   Middle peak PM        2400    2400    PASS
+6   Outer peak AM         3600    3600    PASS
+7   Boundary 08:00        1200    1200    PASS
+8   Boundary 09:59        1200    1200    PASS
+9   Boundary 10:00        1000    1000    PASS
+10  Boundary 17:00        1200    1200    PASS
+11  Boundary 19:59        1200    1200    PASS
+12  Boundary 20:00        1000    1000    PASS
+13  Concession off        1500    1500    PASS
+14  Concession peak       1800    1800    PASS
+
+Table-Driven Suite: 14/14 cases passed.
+
+--- Card Balance Threshold Invariant Checks ---
+Balance 6000, fare 1000 (leaves exactly 5000): ALLOWED  expected ALLOWED [PASS]
+Balance 5999, fare 1000 (leaves 4999 paise) : DENIED  expected DENIED  [PASS]
+Balance 6000, fare 1001 (leaves 4999 paise) : DENIED  expected DENIED  [PASS]
+
+--- Invalid Input Rejection Checks ---
+Unknown zone 7 rejected     : [PASS]
+Negative recharge rejected  : [PASS]
+Hour 'ab' rejected          : [PASS]
+Hour '25' rejected          : [PASS]
+
+--- Five-Journey Hand-Calculated Verification ---
+Five journeys hand-calculated total : 11000 paise (Rs 110.00)
+Program computed five-journey total : 11000 paise (Rs 110.00)
+Comparison Result                   : [PASS]
