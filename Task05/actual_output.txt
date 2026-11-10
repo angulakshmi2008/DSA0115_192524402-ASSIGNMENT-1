@@ -1,0 +1,22 @@
+﻿11 16
+9 6 4
+6 4
+3 1 -3 -1
+18
+=== Task 05: Lookup Table vs. Boolean Expression ===
+
+Hour | Expression Result | Table Result
+-----+-------------------+-------------
+   7 |          OFF-PEAK |    OFF-PEAK
+   8 |              PEAK |        PEAK
+   9 |              PEAK |        PEAK
+  10 |          OFF-PEAK |    OFF-PEAK
+  16 |          OFF-PEAK |    OFF-PEAK
+  17 |              PEAK |        PEAK
+  19 |              PEAK |        PEAK
+  20 |          OFF-PEAK |    OFF-PEAK
+
+Comparison Analysis:
+- Time Complexity: O(1) for both.
+- Memory: Expression uses 0 extra bytes; Table uses 24 bytes (sizeof(bool[24]) = 24 bytes).
+- Granularity: Expression naturally extends to minutes (hour*60 + minute), while hourly table cannot represent 08:30 without 1440 entries.
