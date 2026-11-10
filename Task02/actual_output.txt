@@ -1,0 +1,24 @@
+﻿=== Task 02: Macro Trap & Constants Evaluation ===
+
+Macro expansion (500 + 500 * 2)       : 1500 paise (EXPECTED 2000)
+Constexpr evaluation ((500 + 500) * 2) : 2000 paise (CORRECT)
+
+sizeof(Zone::Inner) [enum class]      : 4 bytes
+sizeof(OldZone::OldInner) [plain enum]: 4 bytes
+
+Plain enum allows silent int arithmetic: OldOuter + 5 = 7
+enum class Zone::Inner requires explicit scope and static_cast to convert to int.
+static_cast<int>(Zone::Outer): 2
+=== Task 02: Classification of C++ Tokens ===
+
+1. Keywords    : constexpr, long, if, return, int, static_cast, bool
+2. Identifiers : MIN_BALANCE_PAISE, BASE_PAISE, Zone, main, result
+3. Literals    : 5000, 1000, 20, 100, true, false, 'A', "Rs "
+4. Operators   : =, +=, *, /, %, ==, >=, &&, ||, ::, <<
+5. Punctuators : { } ( ) [ ] ; , :
+
+Constant values defined in fare_constants.h:
+  Base Fares: Inner = 1000 p, Middle = 2000 p, Outer = 3000 p
+  Peak Surcharge: 20%
+  Concession    : 50%
+  Min Balance   : 5000 p (Rs 50)
