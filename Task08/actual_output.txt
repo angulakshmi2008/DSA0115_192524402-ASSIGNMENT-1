@@ -1,0 +1,24 @@
+﻿=== Test Run 1: safe_io_gate with t8.in (Bad hour & unknown zone) ===
+Journeys: 
+No  Zone  Time     Fare(Rs)  Balance(Rs)
+1   0     09:30       12.00        88.00
+Journey 2: invalid input, skipped
+3   1     18:05       24.00        64.00
+Journey 4: invalid input, skipped
+5   2     20:00      DENIED        64.00
+
+=== Test Run 2: safe_io_gate with t8b.in (Bad journey count validation) ===
+Journeys: Invalid count, try again
+Invalid count, try again
+
+No  Zone  Time     Fare(Rs)  Balance(Rs)
+1   0     08:00       12.00        88.00
+2   2     10:00       30.00        58.00
+
+=== Test Run 3: getline_stoi_alt with t8g.in (Line parsing with exceptions) ===
+=== Alternative Concept: getline + stoi with try/catch ===
+ok 12
+bad line: '7x' (reason: trailing non-numeric characters)
+bad line: 'abc' (reason: stoi)
+ok 5
+bad line: '99999999999' (reason: stoi)
