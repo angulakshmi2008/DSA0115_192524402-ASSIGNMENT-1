@@ -1,0 +1,26 @@
+﻿=== Task 12 Flaw Demonstration (Original Design) ===
+
+Evaluating Zone::Airport off-peak fare using old switch:
+  Calculated Fare: 0 paise (Rs 0.00 - SILENT FREE RIDE REVENUE LOSS!)
+
+Example 2: Original signature fare(Zone, bool peak) cannot receive weekday, date, or concession.
+Example 3: SmartCard::deduct() requires balance >= 5000 paise; cannot allow valid pass holders with low balance.
+=== Task 12: Day-4 Design Challenge Verification ===
+
+Airport weekday 12:00 (base fare Rs 60)       | Expected:  6000 | Actual:  6000 | [PASS]
+Airport weekday 09:00 (peak +20% = Rs 72)     | Expected:  7200 | Actual:  7200 | [PASS]
+Inner Saturday 12:00 (weekend -10% = Rs 9)    | Expected:   900 | Actual:   900 | [PASS]
+Inner Saturday 09:00 (peak window, weekend discount replaces peak) | Expected:   900 | Actual:   900 | [PASS]
+Outer Sunday 18:00 (weekend -10% = Rs 27)     | Expected:  2700 | Actual:  2700 | [PASS]
+Airport Sunday student (concession 3000 then -10%) | Expected:  2700 | Actual:  2700 | [PASS]
+Middle Friday 17:00 senior peak (concession 1000 + 20%) | Expected:  1200 | Actual:  1200 | [PASS]
+
+--- Monthly Pass and SmartCard Integration Tests ---
+Pass: Middle journey covered (fare 0)         | Expected:     0 | Actual:     0 | [PASS]
+Pass: Card balance remains unchanged          | Expected: 10000 | Actual: 10000 | [PASS]
+Pass: Outer journey NOT covered (deducts 3600 peak) | Expected:  3600 | Actual:  3600 | [PASS]
+Pass: Balance after Outer journey             | Expected:  6400 | Actual:  6400 | [PASS]
+Pass: Expired month (Dec 2026) charges normal fare | Expected:  2000 | Actual:  2000 | [PASS]
+No Pass: Airport peak denied due to Rs 50 rule | Expected:    -1 | Actual:    -1 | [PASS]
+
+Overall Task 12 Suite Status: ALL 13 TESTS PASSED
