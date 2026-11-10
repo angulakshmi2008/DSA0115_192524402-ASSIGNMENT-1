@@ -1,0 +1,31 @@
+COMPILER WARNINGS LOG & DIAGNOSTICS (g++ -std=c++17 -Wall -Wextra -pedantic)
+================================================================================
+
+1. Warning in Task 04:
+   Source: Task04/predict_conversions.cpp:18:21
+   Diagnostic message:
+     warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+        18 |     std::cout << (s < u ? "s < u" : "s >= u") << '\n';
+           |                   ~~^~~
+   Meaning & Risk:
+     Comparing signed 'int' (-1) with 'unsigned int' (1) causes implicit promotion of the signed value
+     to unsigned, converting -1 into 4,294,967,295 on 32-bit platforms. This causes -1 < 1 to evaluate FALSE.
+   Resolution:
+     Promote both operands explicitly to signed 'long long' before comparison.
+
+2. Warning in Task 02 (Demo):
+   Diagnostic message:
+     warning: operation on 'i' may be undefined [-Wsequence-point]
+   Meaning & Risk:
+     The statement 'i = i++;' unsequenced write to variable 'i', violating C++ sequence point rules.
+   Resolution:
+     Write idiomatic single-statement increment '++i;' or 'i++;'.
+
+3. Warning in Task 12 (Flaw Demo):
+   Diagnostic message:
+     warning: enumeration value 'Airport' not handled in switch [-Wswitch]
+   Meaning & Risk:
+     A new enumerator was added to enum class Zone, but an existing switch lacked a case for it.
+     The switch fell through silently, leaving the base fare as 0 paise (a free ride bug!).
+   Resolution:
+     Replace the switch with an array lookup indexed by zone, bounded by static_assert(ZONE_COUNT).

@@ -1,0 +1,22 @@
+﻿=== Task 10: Scale Simulation - Expectations vs Execution ===
+
+Journeys:      20000
+  Exact total (long long paise) : 37624700 paise (Rs 376247.00)
+  Double accumulator total      : Rs 376247.00 | Difference: 0.00 paise
+  Float accumulator total       : Rs 376247.00 | Difference: Rs 0.00
+  32-bit int capacity check     : FITS SAFELY (37624700 <= 2147483647)
+
+Journeys:     500000
+  Exact total (long long paise) : 937116000 paise (Rs 9371160.00)
+  Double accumulator total      : Rs 9371160.00 | Difference: 0.00 paise
+  Float accumulator total       : Rs 9371160.00 | Difference: Rs 0.00
+  32-bit int capacity check     : FITS SAFELY (937116000 <= 2147483647)
+
+Journeys:    3000000
+  Exact total (long long paise) : 5624397900 paise (Rs 56243979.00)
+  Double accumulator total      : Rs 56243979.00 | Difference: 0.00 paise
+  Float accumulator total       : Rs 56192716.00 | Difference: Rs -51263.00
+  32-bit int capacity check     : OVERFLOW! (5624397900 > INT_MAX 2147483647)
+    [Note: In ISO C++, signed overflow is Undefined Behaviour.
+     Two's complement wrap would yield: 1329430604]
+
