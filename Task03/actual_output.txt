@@ -1,0 +1,39 @@
+﻿=== Task 03: System Data Types, Sizes, and Limits ===
+
+--- System Data Type Sizes (bytes) ---
+sizeof(bool)        : 1 byte
+sizeof(char)        : 1 byte
+sizeof(int)         : 4 bytes
+sizeof(unsigned int): 4 bytes
+sizeof(long long)   : 8 bytes
+sizeof(float)       : 4 bytes
+sizeof(double)      : 8 bytes
+
+--- Integer Limits & Network Capacity ---
+INT_MAX             : 2147483647 (2147483647)
+LLONG_MAX           : 9223372036854775807
+
+Network daily total (3,000,000 journeys @ avg 1875 paise):
+  Projected Total   : 5625000000 paise
+  Fits in 32-bit int? NO (EXCEEDS INT_MAX by 3,477,516,353 paise!)
+  Fits in long long?  YES (LLONG_MAX is ~9.22 x 10^18)
+
+--- IEEE-754 Floating-Point Precision Flaws ---
+0.1 + 0.2 = 0.30000000000000004
+Does 0.1 + 0.2 == 0.3? false (FALSE!)
+10.80 stored as double: 10.800000000000001
+10 times 0.10 == 1.00? true
+=== Measurement of Floating-Point Drift Across n Additions ===
+Testing fare: Rs 10.80 (1080 paise - e.g. discounted rate with surcharge)
+
+  n Journeys | Exact Total (Rs) | Double Total (Rs) | Absolute Drift (Rs)
+-------------+------------------+------------------+--------------------
+          10 |           108.00 |           108.00 |      -1.421085e-14
+        1000 |         10800.00 |         10800.00 |      -7.821654e-11
+      100000 |       1080000.00 |       1080000.00 |       1.996988e-06
+     1000000 |      10800000.00 |      10800000.00 |       6.423146e-05
+     3000000 |      32400000.00 |      32400000.00 |       1.554348e-03
+    10000000 |     108000000.00 |     107999999.98 |      -1.890907e-02
+
+Conclusion: In integer paise, the error is always identically ZERO.
+In double rupees, rounding error accumulates continuously with n.
