@@ -1,0 +1,9 @@
+﻿=== Task 11: Dynamic Configuration Loader Alternative ===
+
+Successfully loaded 4 zone fares from Task11/fares.cfg:
+  Zone 0 Base Fare: 1000 paise (Rs 10.00)
+  Zone 1 Base Fare: 2000 paise (Rs 20.00)
+  Zone 2 Base Fare: 3000 paise (Rs 30.00)
+  Zone 3 Base Fare: 6000 paise (Rs 60.00)
+
+Runtime Access: dynamicFares[zone] is O(1) after O(z) startup ingestion.
