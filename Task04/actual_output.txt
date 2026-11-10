@@ -1,0 +1,9 @@
+﻿3 3.5
+C 68
+1 true
+s >= u
+Explicit division: 3.5
+Character preserved: C D
+Explicit bool: true
+Safe signed vs unsigned comparison (-1 < 1): s < u (CORRECT)
+Brace initialized integer: 3

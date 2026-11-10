@@ -1,0 +1,11 @@
+﻿g++.exe : Task04/predict_conversions.cpp: In function 'int main()':
+At C:\Users\ANGULAKSHMI SUBBURAJ\DSA0115_192524402-ASSIGNMENT-1\compile.ps1:4 char:1
++ & "$bin\g++.exe" -specs="$specsPath" $args
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Task04/predict_...n 'int main()'::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Task04/predict_conversions.cpp:18:21: warning: comparison of integer expressions of different signedness: 'int' and 
+'unsigned int' [-Wsign-compare]
+   18 |     std::cout << (s < u ? "s < u" : "s >= u") << '\n';
+      |                   ~~^~~

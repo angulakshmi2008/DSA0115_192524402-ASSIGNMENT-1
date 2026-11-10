@@ -1,0 +1,12 @@
+Predicted Output for Task 04 (Recorded BEFORE Execution):
+--------------------------------------------------------
+3 3.5
+C 68
+1 true
+s >= u
+
+Explanation of Underlying C++17 Language Rules:
+1. Line 1: 'a / b' evaluates 7 / 2 with both operands as int, truncating toward zero to 3. Assigning to double 'c' converts 3 to 3.0 (printed as 3). 'static_cast<double>(a) / b' promotes 'b' to double, yielding 3.5.
+2. Line 2: 'A' (ASCII 65) + 2 = 67, which is 'C'. In 'ch + 1', 'ch' undergoes integral promotion to int (67 + 1 = 68), so std::cout prints it as an integer 68 rather than 'D'.
+3. Line 3: Non-zero integer 5 converted to bool evaluates to true. Default bool formatting prints 1; after std::boolalpha, it prints true.
+4. Line 4: In '(s < u)', signed int 's' (-1) is implicitly converted to unsigned int. On a 32-bit architecture, -1 becomes 4,294,967,295. Since 4294967295 < 1 is false, the ternary operator yields "s >= u".
