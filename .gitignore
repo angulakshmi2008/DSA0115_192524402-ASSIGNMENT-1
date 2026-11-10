@@ -1,0 +1,16 @@
+# Compiled binaries and object files
+*.exe
+*.o
+*.obj
+*.out
+*.app
+
+# Debug symbols and build artifacts
+*.pdb
+*.ilk
+*.dSYM/
+
+# Temporary / scratch test outputs
+compiler_test.cpp
+compiler_test.exe
+
