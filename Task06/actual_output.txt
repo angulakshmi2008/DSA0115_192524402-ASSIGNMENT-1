@@ -1,0 +1,17 @@
+﻿Fare Rs 10.00 balance Rs 90
+Fare Rs 36.00 balance Rs 54
+Denied (low balance) balance Rs 54
+=== Task 06: Boundary Time Verification ===
+
+Time  | Description                           | Expected | Actual | Status
+------+---------------------------------------+----------+--------+-------
+07:59 | 07:59 AM (Pre-peak window)            | OFF      | OFF    | PASS
+80:00 | 08:00 AM (AM Peak START - inclusive)  | PEAK     | PEAK   | PASS
+90:59 | 09:59 AM (AM Peak END boundary - inclusive) | PEAK     | PEAK   | PASS
+10:00 | 10:00 AM (AM Peak END - exclusive, OFF-PEAK) | OFF      | OFF    | PASS
+16:59 | 04:59 PM (Pre-peak window)            | OFF      | OFF    | PASS
+17:00 | 05:00 PM (PM Peak START - inclusive)  | PEAK     | PEAK   | PASS
+19:59 | 07:59 PM (PM Peak END boundary - inclusive) | PEAK     | PEAK   | PASS
+20:00 | 08:00 PM (PM Peak END - exclusive, OFF-PEAK) | OFF      | OFF    | PASS
+
+Overall Boundary Test Status: ALL TESTS PASSED
